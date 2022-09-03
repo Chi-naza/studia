@@ -1,6 +1,6 @@
 # studia
 
-An app that help with studies.
+An app that helps with studies.
 
 ## A flutter app with Firebase backend
     - Start studying your subjects
