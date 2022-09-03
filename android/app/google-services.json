@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "195995846502",
+    "project_id": "studia-6cacf",
+    "storage_bucket": "studia-6cacf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195995846502:android:be31dc944e47b3c5f76aa7",
+        "android_client_info": {
+          "package_name": "com.example.studia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195995846502-357ivoeug3hmtbiugs2g8sci4ep5ksvv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_eePlHHBguFRQtc56VmWfKFLGTiyfoik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195995846502-357ivoeug3hmtbiugs2g8sci4ep5ksvv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
