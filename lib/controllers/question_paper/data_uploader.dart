@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:studia/firebase_ref/loading_status.dart';
 import 'package:studia/firebase_ref/references.dart';
 import 'package:studia/main.dart';
 import 'package:studia/models/question_paper_model.dart';
@@ -15,7 +16,14 @@ class DataUploader extends GetxController {
     super.onReady();
   }
 
+  // making the this variable containing an enum variable observable
+  // Getx will know when the value of the variable changes and then redraw the UI or do some assigned task
+  final loadingStatus = LoadingStatus.loading.obs;
+
   Future<void> uploadData() async {
+    // setting the first value here
+    loadingStatus.value = LoadingStatus.loading; 
+
     // Because we want to upload our data to firebase. We get an instance of firestore
     final fireStore = FirebaseFirestore.instance;
 
@@ -56,10 +64,29 @@ class DataUploader extends GetxController {
         'time_seconds': paper.timeSeconds,
         'questions_count': paper.questions == null? 0 : paper.questions!.length
       });
+
+      // the loop that creates the question collection inside the question_field in questionPaper Collection in the fireStore DB
+      for (var question in paper.questions!){
+        final questionPath = questionRF(paperId: paper.id, questionId: question.id);
+        batch.set(questionPath, {"question" : question.question, "correct_answer" : question.correctAnswer});
+
+        // the loop that creates the answer collection inside the answer-field in question Collection in the fireStore DB
+        for (var answer in question.answers){
+          batch.set(
+            questionPath.collection("answers").doc(answer.identifier),
+            {"identifier" : answer.identifier, "answer" : answer.answer}
+          );
+        }
+      }
+
+
     }
 
     // saving the batch file to the FireStore after the loop
     await batch.commit(); 
+
+    // changing the value when our data has been uploaded/saved
+    loadingStatus.value = LoadingStatus.completed; 
 
 
   }
