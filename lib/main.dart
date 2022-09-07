@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:studia/Introduction/introduction.dart';
 import 'package:studia/bindings/initial_bindings.dart';
+import 'package:studia/configuration/themes/app_dark_theme.dart';
+import 'package:studia/configuration/themes/app_light_theme.dart';
 import 'package:studia/controllers/question_paper/data_uploader_screen.dart';
+import 'package:studia/controllers/theme_controller.dart';
 import 'package:studia/firebase_options.dart';
 import 'package:studia/routes/app_routes.dart';
 import 'package:studia/screens/splash/splash_screen.dart';
@@ -28,6 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'studia',
+      theme: Get.find<ThemeController>().lightTheme,
       getPages: AppRoutes.routes(),
     );
   }
