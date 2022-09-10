@@ -27,6 +27,11 @@ const mainGradientDark = LinearGradient(
 
 
 // A function that changes the app theme to dark or light depending on the condition
-LinearGradient mainGradient(BuildContext context){
-  return UIParameters.isDarkMode(context)? mainGradientDark : mainGradientLight;
+LinearGradient mainGradient(){
+  return UIParameters.isDarkMode()? mainGradientDark : mainGradientLight;
+}
+
+// seeting scaffold color based on theme
+Color customScaffoldColor(BuildContext context){
+  return UIParameters.isDarkMode()? Color(0xFF2e3c62) : Color.fromARGB(255,240,237,255);
 }

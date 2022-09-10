@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:studia/configuration/themes/app_colors.dart';
 import 'package:studia/utils/dimensions.dart';
 import 'package:studia/widgets/app_circle_button.dart';
@@ -12,7 +13,7 @@ class IntroductionScreen extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: Dimensions.screenWidth*0.2),
-        decoration: BoxDecoration(gradient: mainGradient(context)),
+        decoration: BoxDecoration(gradient: mainGradient()),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -33,6 +34,7 @@ class IntroductionScreen extends StatelessWidget {
               SizedBox(height: Dimensions.height20*2),
               // arrow in a circular border
               AppCircleButton(
+                onTap:  () => Get.offAndToNamed("/home"),
                 child: Icon(Icons.arrow_forward_ios, size: Dimensions.height45-Dimensions.height10),
               ),
           ],
