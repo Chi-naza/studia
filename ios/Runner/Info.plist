@@ -45,5 +45,20 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+
+	<!-- For IOs Google SignIn setup -->
+	<key> CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key> CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key> CFBundleURLSchemes</key>
+			<array>
+				<!-- Copied from GoogleService-info.plist. key: REVERSED CLIENT ID-->
+				<string>com.googleusercontent.apps.195995846502-nsacag3ba3gvb02q7o8nnp8gjqdi2gst</string>
+			</array>
+		</dict>
+	</array>
+
 </dict>
 </plist>

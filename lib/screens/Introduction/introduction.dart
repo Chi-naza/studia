@@ -7,6 +7,8 @@ import 'package:studia/widgets/app_circle_button.dart';
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/intoduction';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

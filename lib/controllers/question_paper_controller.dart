@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:studia/controllers/auth_controller.dart';
 import 'package:studia/firebase_ref/references.dart';
 import 'package:studia/models/question_paper_model.dart';
 import 'package:studia/services/firebase_storage_services.dart';
@@ -55,6 +56,23 @@ class QuestionPaperController extends GetxController {
     }catch (e){
       print("From Question Paper Controller: $e");
       return null;
+    }
+  }
+
+
+  
+  void navigateToQuestions({ required QuestionPaperModel paperModel, bool tryAgain=false}){
+    AuthController _authController = Get.find();
+
+    if (_authController.isLoggedIn()){
+      if(tryAgain){
+        Get.back();
+        // Get.offNamed()
+      }else{
+        // Get.toNamed()
+      }
+    }else{
+      _authController.showLogInAlertDialog();
     }
   }
 
