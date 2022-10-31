@@ -35,12 +35,11 @@ class MenuScreen extends GetView<MyZoomDrawerController> {
               // Column of user details
               Column(
                 children: [
-                  // if user is logged in and also users data is available. Else return empty sizedBox
-                  
-                  Obx(() => controller.user.value==null? const Text("No name Yet", style: TextStyle(color: Colors.white, fontSize: 40)): Text(
-                    controller.user.value!.displayName??"Chinaza",
+                  // if user is logged in and also users data is available. Else return empty sizedBox                  
+                  Obx(() => controller.user.value==null? Text("Not Signed In", style: TextStyle(fontSize: Dimensions.font20*2, color: onSurfaceTextColor,)): Text(
+                    controller.user.value!.displayName!,
                     style: TextStyle(
-                      fontSize: Dimensions.font23,
+                      fontSize: Dimensions.font20*2,
                       fontWeight: FontWeight.w900,
                       color: onSurfaceTextColor,
                     ),

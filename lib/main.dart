@@ -8,6 +8,7 @@ import 'package:studia/controllers/question_paper/data_uploader_screen.dart';
 import 'package:studia/controllers/theme_controller.dart';
 import 'package:studia/firebase_options.dart';
 import 'package:studia/routes/app_routes.dart';
+import 'package:studia/screens/home/home_screen.dart';
 import 'package:studia/screens/splash/splash_screen.dart';
 
 Future<void> main() async {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'studia',
       debugShowCheckedModeBanner: false,
       theme: Get.find<ThemeController>().lightTheme,
+      // home: HomeScreen(),
       getPages: AppRoutes.routes(),
     );
   }

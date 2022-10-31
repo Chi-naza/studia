@@ -66,8 +66,11 @@ class Questions {
   String question;
   List<Answers> answers;
   String? correctAnswer;
+  String? selectedAnswer;
+
 
   Questions({required this.id, required this.question, required this.answers, this.correctAnswer});
+
 
   // With ' : ' the constructor gets initialized before the body runs
   Questions.fromJson(Map<String, dynamic> json):
@@ -75,6 +78,13 @@ class Questions {
     question = json['question'],
     answers = (json['answers'] as List).map((e) => Answers.fromJson(e)).toList(),
     correctAnswer = json['correct_answer'];
+
+
+  Questions.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot):
+    id = snapshot.id,
+    question = snapshot['question'],
+    answers = [], //(snapshot['answers'] as List).map((e) => Answers.fromJson(e)).toList(),
+    correctAnswer = snapshot['correct_answer'];
   
 
   Map<String, dynamic> toJson() {
@@ -91,6 +101,8 @@ class Questions {
 
 
 
+
+
 class Answers {
   String? identifier;
   String? answer;
@@ -99,13 +111,19 @@ class Answers {
 
   Answers.fromJson(Map<String, dynamic> json):
     identifier = json['identifier'],
-    answer = json['Answer'];
+    answer = json['answer'];
+
+
+  Answers.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot):
+    identifier = snapshot['identifier'] as String?,
+    answer = snapshot['answer'] as String?;
   
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['identifier'] = this.identifier;
-    data['Answer'] = this.answer;
+    data['answer'] = this.answer;
     return data;
   }
+
 }

@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:studia/firebase_ref/references.dart';
+import 'package:studia/screens/Introduction/introduction.dart';
 import 'package:studia/screens/auth/login_screen.dart';
 import 'package:studia/screens/home/home_screen.dart';
+import 'package:studia/utils/app_logger.dart';
 import 'package:studia/widgets/dialogs/dialog_widget.dart';
 
 class AuthController extends GetxController {
@@ -47,7 +48,7 @@ class AuthController extends GetxController {
 
   // function which navigates to the intro screen after the splash screen
   void navigateToIntroduction(){
-    Get.offAllNamed('/introduction');
+    Get.offAllNamed(IntroductionScreen.routeName);
   }
 
 
@@ -68,10 +69,11 @@ class AuthController extends GetxController {
 
         await _auth.signInWithCredential(_credential);
         await saveUser(account);  // saving the user details in our firebase DB
-        navigateToHomeScreen();
+        print("User has been signed In"); //testing
+        Get.offAllNamed(HomeScreen.routeName);
       }
     }on Exception catch(error){
-      return debugPrint("GOOGLE SIGN IN Exception ::: $error");
+      AppLogger.e(error);
     }
   }
 
@@ -122,17 +124,14 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     try{
       await _auth.signOut();
-      navigateToHomeScreen();
+      Get.offAllNamed(HomeScreen.routeName);
     }on FirebaseAuthException catch(e){
-      print("SignOut Error From FireBase: $e");
+      AppLogger.e(e);
     }
   }
 
 
-  // A function that takes a user to the home screen
-  navigateToHomeScreen(){
-    Get.offAllNamed(HomeScreen.routeName);
-  }
+
 
 
 

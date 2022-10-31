@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:studia/controllers/auth_controller.dart';
 import 'package:studia/firebase_ref/references.dart';
 import 'package:studia/models/question_paper_model.dart';
+import 'package:studia/screens/questions/question_screen.dart';
 import 'package:studia/services/firebase_storage_services.dart';
+import 'package:studia/utils/app_logger.dart';
 
 class QuestionPaperController extends GetxController {
   // A list containing all the images gotten from the Firebase Storage. This list is 'observable'
@@ -54,8 +56,7 @@ class QuestionPaperController extends GetxController {
       allPapers.assignAll(paperList);
 
     }catch (e){
-      print("From Question Paper Controller: $e");
-      return null;
+      AppLogger.e(e);
     }
   }
 
@@ -67,9 +68,9 @@ class QuestionPaperController extends GetxController {
     if (_authController.isLoggedIn()){
       if(tryAgain){
         Get.back();
-        // Get.offNamed()
+        Get.toNamed(QuestionScreen.routeName, arguments: paperModel, preventDuplicates: false);
       }else{
-        // Get.toNamed()
+        Get.toNamed(QuestionScreen.routeName, arguments: paperModel);
       }
     }else{
       _authController.showLogInAlertDialog();

@@ -8,4 +8,5 @@ class AppIcons {
   static const trophyOutline = IconData(0xe808, fontFamily: fontFam);
   static const menuLeft = IconData(0xe805, fontFamily: fontFam);
   static const peace = IconData(0xe806, fontFamily: fontFam);
+  static const menu = IconData(0xe804, fontFamily: fontFam);
 }

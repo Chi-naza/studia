@@ -38,7 +38,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
           backgroundColor: Colors.white.withOpacity(0.4),
           slideWidth: Dimensions.screenWidth*0.6,
           // menu screen shows when the drawer is enabled
-          menuScreen: MenuScreen(), 
+          menuScreen: const MenuScreen(), 
           // our main screen is the homeScreen
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
