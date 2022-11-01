@@ -41,7 +41,7 @@ class QuizOverviewScreen extends GetView<QuestionsController> {
                     )),
                   ],
                 ),
-                SizedBox(height: Dimensions.height20),
+                SizedBox(height: Dimensions.height30),
                 // The boxes: Grid
                 Expanded(
                   child: GridView.builder(

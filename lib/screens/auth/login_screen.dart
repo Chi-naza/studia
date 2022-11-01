@@ -26,7 +26,7 @@ class LoginScreen extends GetView<AuthController> {
           children: [
             // book image
             Image.asset(
-              'assets/images/app_splash_logo.png',
+              'assets/images/logo.png',
               width: Dimensions.width30*9,
               height: Dimensions.height30*9,
             ),

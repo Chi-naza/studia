@@ -12,9 +12,9 @@ class SplashScreen extends StatelessWidget {
         alignment: Alignment.center ,
         decoration: BoxDecoration(gradient: mainGradient()),
         child: Image.asset(
-          'assets/images/app_splash_logo.png',
-          width: Dimensions.width30*7,
-          height: Dimensions.height30*7,
+          'assets/images/logo.png',
+          width: Dimensions.width30*9,
+          height: Dimensions.height30*9,
         ),
       ),
     );
